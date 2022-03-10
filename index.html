@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Eugene Serb – Mediaplayer</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="stylesheet" type="text/css" href="css/mediaplayer.css" />
+</head>
+<body>
+
+    <main class="page container">
+
+        <h1>Eugene Serb – Mediaplayer</h1>
+
+        <div class="mediaplayer-wrapper">
+
+            <video class="mediaplayer">
+                <source src="media/rick-astley--never-gonna-give-you-up.mp4" type="video/mp4" />
+            </video>
+
+            <div class="progress-wrapper">
+                <progress max="100" value="0" class="progress"></progress>
+            </div>
+
+            <div class="controls-wrapper">
+                <button id="play">Play</button>
+                <button id="pause">Pause</button>
+                <button id="stop">Stop</button>
+                <button id="speed-up">Speed Up</button>
+                <button id="speed-down">Speed Down</button>
+                <button id="speed-normal">Speed Normal</button>
+                <input id="volume" type="range" min="0" max="100" step="1" value="100" />
+            </div>
+        </div>
+
+    </main>
+
+    <script src="js/mediaplayer.js"></script>
+</body>
+</html>
+
