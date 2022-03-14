@@ -94,10 +94,9 @@
     </header>
 
     <main class="page container">
-
         <h1>Eugene Serb – Mediaplayer</h1>
 
-        <div class="mediaplayer-wrapper">
+        <div class="mediaplayer-app">
 
             <video class="mediaplayer">
                 <source src="media/rick-astley--never-gonna-give-you-up.mp4" type="video/mp4" />
@@ -108,16 +107,22 @@
             </div>
 
             <div class="controls-wrapper">
-                <button id="play">Play</button>
-                <button id="pause">Pause</button>
-                <button id="stop">Stop</button>
-                <button id="speed-up">Speed Up</button>
-                <button id="speed-down">Speed Down</button>
-                <button id="speed-normal">Speed Normal</button>
-                <input id="volume" type="range" min="0" max="100" step="1" value="100" />
+                <div class="controls-wrapper__left-controls">
+                    <button id="play" class="control control_play"></button>
+                    <button id="pause" class="control control_pause"></button>
+                    <button id="stop" class="control control_stop"></button>
+                </div>
+
+                <div class="controls-wrapper__right-controls">
+                    <span></span>
+                    <button id="speed-up">Speed 1.5</button>
+                    <button id="speed-down">Speed 0.5</button>
+                    <button id="speed-normal">Speed Normal</button>
+
+                    <input id="volume" type="range" min="0" max="100" step="1" value="100" />
+                </div>
             </div>
         </div>
-
     </main>
 
     <script src="js/mediaplayer.js"></script>
