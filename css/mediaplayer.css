@@ -3,21 +3,21 @@
 /* ----------- */
 
 .mediaplayer {
+    min-width: 360px;
     height: 480px;
 }
 
 .player {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: space-between;
     height: 100%;
     background-color: #000000;
 }
 
 .video {
-    display: block;
-    margin: 0 auto;
     height: 100%;
+    max-height: calc(100% - 58px);
     border: 0;
     border-radius: 0;
 }

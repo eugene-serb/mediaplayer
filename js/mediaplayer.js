@@ -2,8 +2,6 @@
 /* MEDIAPLAYER */
 /* ----------- */
 
-document.querySelector('#play').onclick = play;
-document.querySelector('#pause').onclick = pause;
 document.querySelector('#stop').onclick = stop;
 document.querySelector('#speed-up').onclick = speedUp;
 document.querySelector('#speed-down').onclick = speedDown;
@@ -15,14 +13,6 @@ const PROGRESS = document.querySelector('.progress');
 
 VIDEO.ontimeupdate = progressUpdate;
 PROGRESS.onclick = videoRewind;
-
-function play() {
-    VIDEO.play();
-};
-
-function pause() {
-    VIDEO.pause();
-};
 
 function stop() {
     VIDEO.pause();
@@ -99,6 +89,21 @@ MOTION.addEventListener('click', () => {
         MOTION_MENU.classList.remove('hidden');
     } else {
         MOTION_MENU.classList.add('hidden');
+    }
+});
+
+const START = document.querySelector('#play');
+
+START.addEventListener('click', () => {
+
+    if (START.classList.contains('control_play')) {
+        START.classList.remove('control_play');
+        START.classList.add('control_pause');
+        VIDEO.play();
+    } else if (START.classList.contains('control_pause')) {
+        START.classList.remove('control_pause');
+        START.classList.add('control_play');
+        VIDEO.pause();
     }
 });
 
