@@ -18,6 +18,8 @@ const LOOP = document.querySelector('#loop');
 const MOTION = document.querySelector('#motion');
 const MOTION_MENU = document.querySelector('.motion-menu');
 
+MOTION_BUTTONS = document.querySelectorAll('.speed-buttons');
+
 /**/
 
 VIDEO.ontimeupdate = () => {
@@ -97,24 +99,12 @@ MOTION.addEventListener('click', () => {
     };
 });
 
-/**/
+MOTION_BUTTONS.forEach((item, index) => {
+    item.addEventListener('click', () => {
+        let speed = item.getAttribute('speed');
 
-document.querySelector('#speed-up').onclick = speedUp;
-document.querySelector('#speed-down').onclick = speedDown;
-document.querySelector('#speed-normal').onclick = speedNormal;
-
-function speedUp() {
-    VIDEO.play()
-    VIDEO.playbackRate = 1.5;
-};
-
-function speedDown() {
-    VIDEO.play()
-    VIDEO.playbackRate = 0.5;
-};
-
-function speedNormal() {
-    VIDEO.play()
-    VIDEO.playbackRate = 1;
-};
+        VIDEO.play();
+        VIDEO.playbackRate = speed;
+    });
+});
 
