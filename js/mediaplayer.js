@@ -4,27 +4,65 @@
 
 const VIDEO = document.querySelector('.video');
 const PROGRESS = document.querySelector('.progress');
-
 const START = document.querySelector('#play');
 const STOP = document.querySelector('#stop');
 const SOUND = document.querySelector('#sound');
 const VOLUME = document.querySelector('#volume');
-
 const MEDIAPLAYER = document.querySelector('.player');
 const FULLSCREEN = document.querySelector('#fullscreen');
-
 const LOOP = document.querySelector('#loop');
-
 const MOTION = document.querySelector('#motion');
 const MOTION_MENU = document.querySelector('.motion-menu');
+const MOTION_BUTTONS = document.querySelectorAll('.speed-buttons');
+const TIME = document.querySelector('.time');
 
-MOTION_BUTTONS = document.querySelectorAll('.speed-buttons');
+/* ----- */
+/* TIMER */
+/* ----- */
 
-/**/
+class Timer {
+    constructor() {
+        this.currentTime = '00:00';
+        this.durationTime = '00:00';
+        this._draw();
+    };
 
-VIDEO.ontimeupdate = () => {
-    PROGRESS.value = 100 * VIDEO.currentTime / VIDEO.duration;
+    update = (current, duration) => {
+        this.currentTime = this._calculate(current);
+        this.durationTime = this._calculate(duration);
+        this._draw();
+    };
+
+    _draw = () => {
+        TIME.innerText = `${this.currentTime} / ${this.durationTime}`;
+    };
+
+    _calculate = (time) => {
+        let seconds = Math.floor(time);
+        let minutes = 0;
+
+        if (seconds >= 60) {
+            minutes = Math.floor(seconds / 60);
+            seconds = seconds - (minutes * 60);
+        };
+
+        minutes = (minutes < 10) ? `0${minutes}` : `${minutes}`;
+        seconds = (seconds < 10) ? `0${seconds}` : `${seconds}`;
+
+        return `${minutes}:${seconds}`;
+    };
 };
+
+/* ------ */
+/* PLAYER */
+/* ------ */
+
+let timer = new Timer();
+
+VIDEO.addEventListener('timeupdate', () => {
+    PROGRESS.value = 100 * VIDEO.currentTime / VIDEO.duration;
+    timer.update(VIDEO.currentTime, VIDEO.duration);
+});
 
 PROGRESS.addEventListener('click', () => {
     let width = PROGRESS.offsetWidth;
@@ -99,7 +137,7 @@ MOTION.addEventListener('click', () => {
     };
 });
 
-MOTION_BUTTONS.forEach((item, index) => {
+MOTION_BUTTONS.forEach((item) => {
     item.addEventListener('click', () => {
         let speed = item.getAttribute('speed');
 
