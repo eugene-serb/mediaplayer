@@ -54,7 +54,8 @@ function videoRewind() {
     VIDEO.play();
 };
 
-/**/
+/* --- */
+
 
 const MEDIAPLAYER = document.querySelector('.player');
 const FULLSCREEN = document.querySelector('#fullscreen');
@@ -71,6 +72,7 @@ FULLSCREEN.addEventListener('click', () => {
     };
 });
 
+
 const LOOP = document.querySelector('#loop');
 
 LOOP.addEventListener('click', () => {
@@ -80,6 +82,7 @@ LOOP.addEventListener('click', () => {
         VIDEO.setAttribute('loop', '');
     }
 });
+
 
 const MOTION = document.querySelector('#motion');
 const MOTION_MENU = document.querySelector('.motion-menu');
@@ -92,10 +95,10 @@ MOTION.addEventListener('click', () => {
     }
 });
 
+
 const START = document.querySelector('#play');
 
 START.addEventListener('click', () => {
-
     if (START.classList.contains('control_play')) {
         START.classList.remove('control_play');
         START.classList.add('control_pause');
@@ -104,6 +107,21 @@ START.addEventListener('click', () => {
         START.classList.remove('control_pause');
         START.classList.add('control_play');
         VIDEO.pause();
+    }
+});
+
+
+const SOUND = document.querySelector('#sound');
+
+SOUND.addEventListener('click', () => {
+    if (VIDEO.muted) {
+        SOUND.classList.remove('control_sound-muted');
+        SOUND.classList.add('control_sound');
+        VIDEO.muted = false;
+    } else {
+        SOUND.classList.remove('control_sound');
+        SOUND.classList.add('control_sound-muted');
+        VIDEO.muted = true;
     }
 });
 
