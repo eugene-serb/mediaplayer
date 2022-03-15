@@ -96,29 +96,45 @@
     <main class="page container">
         <h1>Eugene Serb – Mediaplayer</h1>
 
-        <div class="mediaplayer-app">
+        <div class="mediaplayer">
+            <div class="player">
+                <video class="video">
+                    <source src="media/video-template.webm" type="video/webm" />
+                </video>
 
-            <video class="mediaplayer">
-                <source src="media/video-template.webm" type="video/webm" />
-            </video>
+                <div class="controls-wrapper">
 
-            <div class="progress-wrapper">
-                <progress max="100" value="0" class="progress"></progress>
-            </div>
+                    <div class="progress-wrapper">
+                        <progress max="100" value="0" class="progress"></progress>
+                    </div>
 
-            <div class="controls-wrapper">
-                <div class="controls-wrapper__left-controls">
-                    <button id="play" class="control control_play"></button>
-                    <button id="pause" class="control control_pause"></button>
-                    <button id="stop" class="control control_stop"></button>
-                </div>
+                    <div class="buttons">
+                        <div class="buttons__atRight">
+                            <button id="play" class="control control_play"></button>
+                            <button id="pause" class="control control_pause"></button>
+                            <button id="stop" class="control control_stop"></button>
+                            <input id="volume" type="range" min="0" max="100" step="1" value="100" />
+                        </div>
 
-                <div class="controls-wrapper__right-controls">
-                    <button id="speed-up">Speed 1.5</button>
-                    <button id="speed-down">Speed 0.5</button>
-                    <button id="speed-normal">Speed Normal</button>
+                        <div class="buttons__atLeft">
 
-                    <input id="volume" type="range" min="0" max="100" step="1" value="100" />
+                            <div class="motion-menu hidden">
+                                <button id="speed-down">Speed 0.25</button>
+                                <button id="speed-down">Speed 0.5</button>
+                                <button id="speed-down">Speed 0.75</button>
+                                <button id="speed-normal">Speed Normal</button>
+                                <button id="speed-up">Speed 1.25</button>
+                                <button id="speed-up">Speed 1.5</button>
+                                <button id="speed-up">Speed 1.75</button>
+                                <button id="speed-up">Speed 2.0</button>
+                            </div>
+
+                            <button id="motion" class="control control_motion"></button>
+                            <button id="loop" class="control control_loop"></button>
+                            <button id="fullscreen" class="control control_fullscreen"></button>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>

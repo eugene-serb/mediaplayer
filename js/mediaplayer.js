@@ -10,7 +10,7 @@ document.querySelector('#speed-down').onclick = speedDown;
 document.querySelector('#speed-normal').onclick = speedNormal;
 document.querySelector('#volume').oninput = videoVolume;
 
-const VIDEO = document.querySelector('.mediaplayer');
+const VIDEO = document.querySelector('.video');
 const PROGRESS = document.querySelector('.progress');
 
 VIDEO.ontimeupdate = progressUpdate;
@@ -63,4 +63,42 @@ function videoRewind() {
     VIDEO.currentTime = VIDEO.duration * offset / width;
     VIDEO.play();
 };
+
+/**/
+
+const MEDIAPLAYER = document.querySelector('.player');
+const FULLSCREEN = document.querySelector('#fullscreen');
+
+FULLSCREEN.addEventListener('click', () => {
+    if (FULLSCREEN.classList.contains('control_fullscreen')) {
+        FULLSCREEN.classList.remove('control_fullscreen');
+        FULLSCREEN.classList.add('control_fullscreen-exit');
+        MEDIAPLAYER.requestFullscreen();
+    } else if (FULLSCREEN.classList.contains('control_fullscreen-exit')) {
+        FULLSCREEN.classList.remove('control_fullscreen-exit');
+        FULLSCREEN.classList.add('control_fullscreen');
+        document.exitFullscreen();
+    };
+});
+
+const LOOP = document.querySelector('#loop');
+
+LOOP.addEventListener('click', () => {
+    if (VIDEO.hasAttribute('loop')) {
+        VIDEO.removeAttribute('loop', '');
+    } else {
+        VIDEO.setAttribute('loop', '');
+    }
+});
+
+const MOTION = document.querySelector('#motion');
+const MOTION_MENU = document.querySelector('.motion-menu');
+
+MOTION.addEventListener('click', () => {
+    if (MOTION_MENU.classList.contains('hidden')) {
+        MOTION_MENU.classList.remove('hidden');
+    } else {
+        MOTION_MENU.classList.add('hidden');
+    }
+});
 

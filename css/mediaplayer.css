@@ -2,15 +2,32 @@
 /* MEDIAPLAYER */
 /* ----------- */
 
-.mediaplayer-app {
+.mediaplayer {
+    height: 480px;
 }
 
-.mediaplayer {
-    width: 100%;
-    height: 480px;
+.player {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 100%;
+    background-color: #000000;
+}
+
+.video {
+    display: block;
+    margin: 0 auto;
+    height: 100%;
     border: 0;
     border-radius: 0;
-    background-color: #000000;
+}
+
+/**/
+
+.controls-wrapper {
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+    padding: 4px;
 }
 
 /* --- */
@@ -28,10 +45,12 @@
 
 /* --- */
 
-.controls-wrapper {
+.buttons {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    background-color: #FFFFFF;
+    height: 32px;
 }
 
 /* --- */
@@ -79,11 +98,74 @@
 
 /* --- */
 
-.controls-wrapper__right-controls {
-    align-self: center;
+.buttons__atRight, .buttons__atLeft {
+    display: flex;
+    flex-direction: row;
+   /* justify-content: flex-start;*/
+    align-items: center;
 }
 
 #volume {
     padding: 0;
+}
+
+/**/
+
+.control_motion {
+    background-image: url('../img/icons/slow_motion_video_black_24dp.svg');
+}
+
+@media (prefers-color-scheme: dark) {
+    .control_motion {
+        background-image: url('../img/icons/slow_motion_video_white_24dp.svg');
+    }
+}
+
+.control_loop {
+    background-image: url('../img/icons/loop_black_24dp.svg');
+}
+
+@media (prefers-color-scheme: dark) {
+    .control_loop {
+        background-image: url('../img/icons/loop_white_24dp.svg');
+    }
+}
+
+.control_fullscreen {
+    background-image: url('../img/icons/fullscreen_black_24dp.svg');
+}
+
+@media (prefers-color-scheme: dark) {
+    .control_fullscreen {
+        background-image: url('../img/icons/fullscreen_white_24dp.svg');
+    }
+}
+
+.control_fullscreen-exit {
+    background-image: url('../img/icons/fullscreen_exit_black_24dp.svg');
+}
+
+@media (prefers-color-scheme: dark) {
+    .control_fullscreen-exit {
+        background-image: url('../img/icons/fullscreen_exit_white_24dp.svg');
+    }
+}
+
+/**/
+
+.motion-menu {
+    display: flex;
+    flex-direction: column;
+    min-width: 128px;
+    position: relative;
+    bottom: calc(101.5px + 32px + 16px);
+    background-color: #FFFFFF;
+    border: 1px solid #000000;
+}
+
+/**/
+
+.hidden {
+    display: none !important;
 }
 
