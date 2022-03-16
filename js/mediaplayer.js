@@ -133,17 +133,35 @@ VOLUME.addEventListener('input', () => {
     VIDEO.volume = volume / 100;
 });
 
-FULLSCREEN.addEventListener('click', () => {
-    if (FULLSCREEN_BUTTON.classList.contains('control_fullscreen')) {
-        FULLSCREEN_BUTTON.classList.remove('control_fullscreen');
-        FULLSCREEN_BUTTON.classList.add('control_fullscreen-exit');
-        MEDIAPLAYER.requestFullscreen();
-    } else if (FULLSCREEN_BUTTON.classList.contains('control_fullscreen-exit')) {
-        FULLSCREEN_BUTTON.classList.remove('control_fullscreen-exit');
-        FULLSCREEN_BUTTON.classList.add('control_fullscreen');
+/**/
+
+unsetFullscreen = () => {
+    FULLSCREEN_BUTTON.classList.remove('control_fullscreen');
+    FULLSCREEN_BUTTON.classList.add('control_fullscreen-exit');
+};
+
+setFullscreen = () => {
+    FULLSCREEN_BUTTON.classList.remove('control_fullscreen-exit');
+    FULLSCREEN_BUTTON.classList.add('control_fullscreen');
+};
+
+FULLSCREEN_BUTTON.addEventListener('click', () => {
+    if (document.fullscreen) {
         document.exitFullscreen();
+    } else {
+        MEDIAPLAYER.requestFullscreen();
     };
 });
+
+window.addEventListener('fullscreenchange', (e) => {
+    if (document.fullscreen) {
+        unsetFullscreen();
+    } else {
+        setFullscreen();
+    };
+});
+
+/**/
 
 LOOP_BUTTON.addEventListener('click', () => {
     if (VIDEO.hasAttribute('loop')) {
