@@ -65,7 +65,7 @@ VIDEO.addEventListener('timeupdate', () => {
 
     if (!VIDEO.loop) {
         if (VIDEO.currentTime === VIDEO.duration) {
-            playPause();
+            setPlay();
         };
     };
 });
@@ -75,35 +75,45 @@ PROGRESS.addEventListener('click', () => {
     let offset = event.offsetX;
 
     PROGRESS.value = 100 * offset / width;
-
-    VIDEO.pause();
     VIDEO.currentTime = VIDEO.duration * offset / width;
-    VIDEO.play();
 });
 
 /**/
 
-playPause = () => {
+setPlay = () => {
+    START_BUTTON.classList.remove('control_pause');
+    START_BUTTON.classList.add('control_play');
+};
+
+setPause = () => {
+    START_BUTTON.classList.remove('control_play');
+    START_BUTTON.classList.add('control_pause');
+};
+
+swapPlayPause = () => {
     if (START_BUTTON.classList.contains('control_play')) {
-        START_BUTTON.classList.remove('control_play');
-        START_BUTTON.classList.add('control_pause');
-        VIDEO.play();
+        setPause();
     } else if (START_BUTTON.classList.contains('control_pause')) {
-        START_BUTTON.classList.remove('control_pause');
-        START_BUTTON.classList.add('control_play');
-        VIDEO.pause();
+        setPlay();
     };
 };
 
 START_BUTTON.addEventListener('click', () => {
-    playPause();
+    swapPlayPause();
+
+    if (VIDEO.paused) {
+        VIDEO.play();
+    } else {
+        VIDEO.pause();
+    };
 });
 
 /**/
 
 STOP_BUTTON.addEventListener('click', () => {
-    playPause();
+    VIDEO.pause();
     VIDEO.currentTime = 0;
+    setPlay();
 });
 
 SOUND_BUTTON.addEventListener('click', () => {
