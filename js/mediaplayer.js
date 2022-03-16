@@ -4,13 +4,13 @@
 
 const VIDEO = document.querySelector('.video');
 const PROGRESS = document.querySelector('.progress');
-const START = document.querySelector('#play');
-const STOP = document.querySelector('#stop');
-const SOUND = document.querySelector('#sound');
+const START_BUTTON = document.querySelector('#play');
+const STOP_BUTTON = document.querySelector('#stop');
+const SOUND_BUTTON = document.querySelector('#sound');
 const VOLUME = document.querySelector('#volume');
 const MEDIAPLAYER = document.querySelector('.player');
-const FULLSCREEN = document.querySelector('#fullscreen');
-const LOOP = document.querySelector('#loop');
+const FULLSCREEN_BUTTON = document.querySelector('#fullscreen');
+const LOOP_BUTTON = document.querySelector('#loop');
 const MOTION = document.querySelector('#motion');
 const MOTION_MENU = document.querySelector('.motion-menu');
 const MOTION_BUTTONS = document.querySelectorAll('.speed-buttons');
@@ -62,6 +62,12 @@ let timer = new Timer();
 VIDEO.addEventListener('timeupdate', () => {
     PROGRESS.value = 100 * VIDEO.currentTime / VIDEO.duration;
     timer.update(VIDEO.currentTime, VIDEO.duration);
+
+    if (!VIDEO.loop) {
+        if (VIDEO.currentTime === VIDEO.duration) {
+            playPause();
+        };
+    };
 });
 
 PROGRESS.addEventListener('click', () => {
@@ -75,31 +81,39 @@ PROGRESS.addEventListener('click', () => {
     VIDEO.play();
 });
 
-START.addEventListener('click', () => {
-    if (START.classList.contains('control_play')) {
-        START.classList.remove('control_play');
-        START.classList.add('control_pause');
+/**/
+
+playPause = () => {
+    if (START_BUTTON.classList.contains('control_play')) {
+        START_BUTTON.classList.remove('control_play');
+        START_BUTTON.classList.add('control_pause');
         VIDEO.play();
-    } else if (START.classList.contains('control_pause')) {
-        START.classList.remove('control_pause');
-        START.classList.add('control_play');
+    } else if (START_BUTTON.classList.contains('control_pause')) {
+        START_BUTTON.classList.remove('control_pause');
+        START_BUTTON.classList.add('control_play');
         VIDEO.pause();
     };
+};
+
+START_BUTTON.addEventListener('click', () => {
+    playPause();
 });
 
-STOP.addEventListener('click', () => {
-    VIDEO.pause();
+/**/
+
+STOP_BUTTON.addEventListener('click', () => {
+    playPause();
     VIDEO.currentTime = 0;
 });
 
-SOUND.addEventListener('click', () => {
+SOUND_BUTTON.addEventListener('click', () => {
     if (VIDEO.muted) {
-        SOUND.classList.remove('control_sound-muted');
-        SOUND.classList.add('control_sound');
+        SOUND_BUTTON.classList.remove('control_sound-muted');
+        SOUND_BUTTON.classList.add('control_sound');
         VIDEO.muted = false;
     } else {
-        SOUND.classList.remove('control_sound');
-        SOUND.classList.add('control_sound-muted');
+        SOUND_BUTTON.classList.remove('control_sound');
+        SOUND_BUTTON.classList.add('control_sound-muted');
         VIDEO.muted = true;
     };
 });
@@ -110,18 +124,18 @@ VOLUME.addEventListener('input', () => {
 });
 
 FULLSCREEN.addEventListener('click', () => {
-    if (FULLSCREEN.classList.contains('control_fullscreen')) {
-        FULLSCREEN.classList.remove('control_fullscreen');
-        FULLSCREEN.classList.add('control_fullscreen-exit');
+    if (FULLSCREEN_BUTTON.classList.contains('control_fullscreen')) {
+        FULLSCREEN_BUTTON.classList.remove('control_fullscreen');
+        FULLSCREEN_BUTTON.classList.add('control_fullscreen-exit');
         MEDIAPLAYER.requestFullscreen();
-    } else if (FULLSCREEN.classList.contains('control_fullscreen-exit')) {
-        FULLSCREEN.classList.remove('control_fullscreen-exit');
-        FULLSCREEN.classList.add('control_fullscreen');
+    } else if (FULLSCREEN_BUTTON.classList.contains('control_fullscreen-exit')) {
+        FULLSCREEN_BUTTON.classList.remove('control_fullscreen-exit');
+        FULLSCREEN_BUTTON.classList.add('control_fullscreen');
         document.exitFullscreen();
     };
 });
 
-LOOP.addEventListener('click', () => {
+LOOP_BUTTON.addEventListener('click', () => {
     if (VIDEO.hasAttribute('loop')) {
         VIDEO.removeAttribute('loop', '');
     } else {
