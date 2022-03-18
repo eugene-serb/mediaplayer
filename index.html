@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Eugene Serb – Mediaplayer</title>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="color-scheme" content="light dark" />
+    <meta name="robots" content="all" />
+
+    <link rel="canonical" href="https://eugene-serb.github.io/mediaplayer/" />
+    <link rel="shortcut icon" type="image/x-icon" href="https://eugene-serb.github.io/img/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="https://eugene-serb.github.io/css/styles.css" />
+    <link rel="stylesheet" type="text/css" href="css/mediaplayer.css" />
+
+    <meta name="author" content="Eugene Serb" />
+    <meta name="copyright" content="Eugene Serb, 2021 — 2022" />
+    <meta name="publisher-email" content="eugene.serb@gmail.com" />
+    <meta name="publisher-url" content="https://eugene-serb.github.io/" />
+    <meta name="keywords" content="Eugene Serb, eugene-serb, eugene_serb, eugene.serb, Evgeniy Serb, Евгений Серб, contacts, CV, resume, portfolio, repositories, services, coder, developer, development, trader, analyst, analytics, mining, miner, cryptocurrencies, crypto, blockchain, NFT, ETF, DeFi, Bitcoin, Ethereum, artist, art, drawing, painting, musician, music, guitar, vocal, Novorossiysk, mediaplayer, JavaScript, JS, HTML, CSS" />
+    <meta name="description" content="Mediaplayer in JavaScript and HTML with CSS" />
+
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Eugene Serb – Mediaplayer" />
+    <meta property="og:site_name" content="Eugene Serb — Website" />
+    <meta property="og:description" content="Hi, friends! My name is Eugene Serb, and there is my personal page with my contact info, links, services, repositories and biography." />
+    <meta property="og:url" content="https://eugene-serb.github.io/mediaplayer/" />
+    <meta property="og:image" content="https://eugene-serb.github.io/img/avatar.jpg" />
+    <meta property="vk:image" content="https://eugene-serb.github.io/img/avatar.jpg" />
+
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:creator" content="@eugene_serb" />
+    <meta name="twitter:title" content="Eugene Serb – Mediaplayer" />
+    <meta name="twitter:description" content="Mediaplayer in JavaScript and HTML with CSS" />
+    <meta name="twitter:image" content="https://eugene-serb.github.io/img/avatar.jpg" />
+
+    <meta name="google-site-verification" content="qLQbgnmQEfvprDF8WR6oL_b_Qt0R9kKcIEOfHqWlFm8" />
+    <meta name="yandex-verification" content="e6e0bff7caaa7ecd" />
+    <meta name="msvalidate.01" content="6E1771734F083E5366205F06314C3577" />
+    <meta name='wmail-verification' content='46d069b79f9c774ce0bbf55f46aef201' />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4NB4LGNNLB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-4NB4LGNNLB');
+    </script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <!-- Yandex.Metrika counter -->
+    <script>
+        (function (m, e, t, r, i, k, a) {
+            m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+            m[i].l = 1 * new Date(); k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+        })
+            (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+        ym(79722217, "init", {
+            clickmap: true,
+            trackLinks: true,
+            accurateTrackBounce: true,
+            webvisor: true
+        });
+    </script>
+    <!-- /Yandex.Metrika counter -->
+</head>
+<body>
+    <header class="header">
+        <div class="header-wrapper container">
+            <div class="logo-wrapper">
+                <span class="logo-wrapper__logo">Eugene Serb.</span>
+            </div>
+            <nav class="menu-wrapper">
+                <ul class="navigation">
+                    <li class="navigation__item">
+                        <a href="https://eugene-serb.github.io/" target="_self" class="navigation__link">Home</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a href="https://eugene-serb.github.io/#projects" target="_self" class="navigation__link">Projects</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a href="https://eugene-serb.github.io/#skills" target="_self" class="navigation__link">Skills</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a href="https://eugene-serb.github.io/#services" target="_self" class="navigation__link">Services</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page container">
+        <h1>Eugene Serb – Mediaplayer</h1>
+
+        <div class="mediaplayer">
+            <div class="player">
+                <video class="video">
+                    <source src="media/video-template.mp4" type="video/mp4" />
+                    <!--<source src="media/video-template.webm" type="video/webm" />-->
+                </video>
+
+                <div class="controls-wrapper">
+
+                    <div class="progress-wrapper">
+                        <progress max="100" value="0" class="progress"></progress>
+                    </div>
+
+                    <div class="buttons">
+                        <div class="buttons__atRight">
+                            <button id="play" class="control control_play"></button>
+                            <button id="stop" class="control control_stop"></button>
+                            <button id="sound" class="control control_sound"></button>
+                            <input id="volume" type="range" min="0" max="100" step="1" value="100" />
+                            <span class="time">00:00 / 00:00</span>
+                        </div>
+
+                        <div class="buttons__atLeft">
+
+                            <div class="motion-menu hidden">
+                                <button class="speed-buttons" speed="0.25">Speed 0.25</button>
+                                <button class="speed-buttons" speed="0.5">Speed 0.5</button>
+                                <button class="speed-buttons" speed="0.75">Speed 0.75</button>
+                                <button class="speed-buttons" speed="1">Speed Normal</button>
+                                <button class="speed-buttons" speed="1.25">Speed 1.25</button>
+                                <button class="speed-buttons" speed="1.5">Speed 1.5</button>
+                                <button class="speed-buttons" speed="1.75">Speed 1.75</button>
+                                <button class="speed-buttons" speed="2">Speed 2.0</button>
+                            </div>
+
+                            <button id="motion" class="control control_motion"></button>
+                            <button id="loop" class="control control_loop"></button>
+                            <button id="fullscreen" class="control control_fullscreen"></button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="js/mediaplayer.js"></script>
+    <script src="https://eugene-serb.github.io/js/scripts.js"></script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/79722217" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+</body>
+</html>
+
