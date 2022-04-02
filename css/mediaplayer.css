@@ -5,8 +5,8 @@
 @charset 'UTF-8';
 
 .mediaplayer {
-    min-width: 500px;
-    height: 500px;
+    min-width: 400px;
+    height: 400px;
 }
 
 .player {
@@ -19,7 +19,7 @@
 
 .video {
     height: 100%;
-    max-height: calc(100% - 58px);
+    max-height: calc(100% - 46px);
     border: 0;
     border-radius: 0;
 }
@@ -60,7 +60,7 @@
 
     .progress {
         width: 100%;
-        height: 16px;
+        height: 12px;
     }
 
 .buttons {
@@ -68,15 +68,15 @@
     flex-direction: row;
     justify-content: space-between;
     background-color: #FFFFFF;
-    height: 32px;
+    height: 24px;
 }
 
 .control {
     padding: 0;
     margin: 0;
     border: 0;
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     background-color: transparent;
     background-repeat: no-repeat;
     background-size: cover;
@@ -84,6 +84,8 @@
 
 .time {
     color: #000000;
+    font-size: 12px;
+    white-space: nowrap;
 }
 
 .control_play {
@@ -145,5 +147,36 @@
 
 .hidden {
     display: none !important;
+}
+
+/**/
+
+@media only screen and (min-width: 640px) {
+    .mediaplayer {
+        min-width: 500px;
+        height: 500px;
+    }
+
+    .video {
+        max-height: calc(100% - 58px);
+    }
+
+    .buttons {
+        height: 32px;
+    }
+
+    .control {
+        width: 32px;
+        height: 32px;
+    }
+
+    .time {
+        font-size: 16px
+    }
+
+    .progress {
+        width: 100%;
+        height: 16px;
+    }
 }
 
