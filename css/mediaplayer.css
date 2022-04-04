@@ -1,12 +1,12 @@
-@charset 'UTF-8';
-
 /* ----------- */
 /* MEDIAPLAYER */
 /* ----------- */
 
+@charset 'UTF-8';
+
 .mediaplayer {
-    min-width: 500px;
-    height: 500px;
+    min-width: 400px;
+    height: 400px;
 }
 
 .player {
@@ -19,12 +19,10 @@
 
 .video {
     height: 100%;
-    max-height: calc(100% - 58px);
+    max-height: calc(100% - 46px);
     border: 0;
     border-radius: 0;
 }
-
-/**/
 
 .controls-wrapper {
     background-color: #FFFFFF;
@@ -54,8 +52,6 @@
     }
 }
 
-/* --- */
-
 .progress-wrapper {
     display: flex;
     flex-direction: row;
@@ -64,63 +60,45 @@
 
     .progress {
         width: 100%;
-        height: 16px;
+        height: 12px;
     }
-
-/* --- */
 
 .buttons {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     background-color: #FFFFFF;
-    height: 32px;
+    height: 24px;
 }
-
-/* --- */
 
 .control {
     padding: 0;
     margin: 0;
     border: 0;
-    width: 32px;
-    height: 32px;
+    width: 24px;
+    height: 24px;
     background-color: transparent;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.time {
+    color: #000000;
+    font-size: 12px;
+    white-space: nowrap;
 }
 
 .control_play {
     background-image: url('../img/icons/play_arrow_black_24dp.svg');
 }
 
-    @media (prefers-color-scheme: dark) {
-        .control_play {
-            background-image: url('../img/icons/play_arrow_white_24dp.svg');
-        }
-    }
-
 .control_pause {
     background-image: url('../img/icons/pause_black_24dp.svg');
-}
-
-@media (prefers-color-scheme: dark) {
-    .control_pause {
-        background-image: url('../img/icons/pause_white_24dp.svg');
-    }
 }
 
 .control_stop {
     background-image: url('../img/icons/stop_black_24dp.svg');
 }
-
-    @media (prefers-color-scheme: dark) {
-        .control_stop {
-            background-image: url('../img/icons/stop_white_24dp.svg');
-        }
-    }
-
-/* --- */
 
 .buttons__atRight, .buttons__atLeft {
     display: flex;
@@ -133,69 +111,29 @@
     padding: 0;
 }
 
-/**/
-
 .control_sound {
     background-image: url('../img/icons/volume_up_black_24dp.svg');
-}
-
-@media (prefers-color-scheme: dark) {
-    .control_sound {
-        background-image: url('../img/icons/volume_up_white_24dp.svg');
-    }
 }
 
 .control_sound-muted {
     background-image: url('../img/icons/volume_off_black_24dp.svg');
 }
 
-@media (prefers-color-scheme: dark) {
-    .control_sound-muted {
-        background-image: url('../img/icons/volume_off_white_24dp.svg');
-    }
-}
-
 .control_motion {
     background-image: url('../img/icons/slow_motion_video_black_24dp.svg');
-}
-
-@media (prefers-color-scheme: dark) {
-    .control_motion {
-        background-image: url('../img/icons/slow_motion_video_white_24dp.svg');
-    }
 }
 
 .control_loop {
     background-image: url('../img/icons/loop_black_24dp.svg');
 }
 
-@media (prefers-color-scheme: dark) {
-    .control_loop {
-        background-image: url('../img/icons/loop_white_24dp.svg');
-    }
-}
-
 .control_fullscreen {
     background-image: url('../img/icons/fullscreen_black_24dp.svg');
-}
-
-@media (prefers-color-scheme: dark) {
-    .control_fullscreen {
-        background-image: url('../img/icons/fullscreen_white_24dp.svg');
-    }
 }
 
 .control_fullscreen-exit {
     background-image: url('../img/icons/fullscreen_exit_black_24dp.svg');
 }
-
-@media (prefers-color-scheme: dark) {
-    .control_fullscreen-exit {
-        background-image: url('../img/icons/fullscreen_exit_white_24dp.svg');
-    }
-}
-
-/**/
 
 .motion-menu {
     display: flex;
@@ -207,9 +145,38 @@
     border: 1px solid #000000;
 }
 
-/**/
-
 .hidden {
     display: none !important;
+}
+
+/**/
+
+@media only screen and (min-width: 640px) {
+    .mediaplayer {
+        min-width: 500px;
+        height: 500px;
+    }
+
+    .video {
+        max-height: calc(100% - 58px);
+    }
+
+    .buttons {
+        height: 32px;
+    }
+
+    .control {
+        width: 32px;
+        height: 32px;
+    }
+
+    .time {
+        font-size: 16px
+    }
+
+    .progress {
+        width: 100%;
+        height: 16px;
+    }
 }
 
