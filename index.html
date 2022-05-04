@@ -96,9 +96,9 @@
     <main class="page container">
         <h1 class="visually-hidden">Eugene Serb – Mediaplayer</h1>
 
-        <section class="post mediaplayer">
+        <section class="post">
             <h2 class="post__header">Mediaplayer</h2>
-            <div class="player">
+            <div class="mediaplayer">
                 <video class="video">
                     <source src="media/video-template.mp4" type="video/mp4" />
                     <!--<source src="media/video-template.webm" type="video/webm" />-->
@@ -107,15 +107,15 @@
                     <div class="progress-wrapper">
                         <progress max="100" value="0" class="progress"></progress>
                     </div>
-                    <div class="buttons">
-                        <div class="buttons__atRight">
+                    <div class="buttons-wrapper">
+                        <div class="buttons-atRight">
                             <button id="play" class="control control_play"></button>
                             <button id="stop" class="control control_stop"></button>
                             <button id="sound" class="control control_sound"></button>
                             <input id="volume" type="range" min="0" max="100" step="1" value="100" />
                             <span class="time">00:00 / 00:00</span>
                         </div>
-                        <div class="buttons__atLeft">
+                        <div class="buttons-atLeft">
                             <div class="motion-menu hidden">
                                 <button class="speed-buttons" speed="0.25">Speed 0.25</button>
                                 <button class="speed-buttons" speed="0.5">Speed 0.5</button>
