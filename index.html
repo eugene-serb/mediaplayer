@@ -80,13 +80,13 @@
                         <a href="https://eugene-serb.github.io/" target="_self" class="navigation__link">Home</a>
                     </li>
                     <li class="navigation__item">
-                        <a href="https://eugene-serb.github.io/#projects" target="_self" class="navigation__link">Projects</a>
-                    </li>
-                    <li class="navigation__item">
                         <a href="https://eugene-serb.github.io/#skills" target="_self" class="navigation__link">Skills</a>
                     </li>
                     <li class="navigation__item">
                         <a href="https://eugene-serb.github.io/#services" target="_self" class="navigation__link">Services</a>
+                    </li>
+                    <li class="navigation__item">
+                        <a href="https://eugene-serb.github.io/#projects" target="_self" class="navigation__link">Projects</a>
                     </li>
                 </ul>
             </nav>
@@ -94,32 +94,28 @@
     </header>
 
     <main class="page container">
-        <h1>Eugene Serb – Mediaplayer</h1>
+        <h1 class="visually-hidden">Eugene Serb – Mediaplayer</h1>
 
-        <div class="mediaplayer">
-            <div class="player">
+        <section class="post">
+            <h2 class="post__header">Mediaplayer</h2>
+            <div class="mediaplayer">
                 <video class="video">
                     <source src="media/video-template.mp4" type="video/mp4" />
                     <!--<source src="media/video-template.webm" type="video/webm" />-->
                 </video>
-
                 <div class="controls-wrapper">
-
                     <div class="progress-wrapper">
                         <progress max="100" value="0" class="progress"></progress>
                     </div>
-
-                    <div class="buttons">
-                        <div class="buttons__atRight">
+                    <div class="buttons-wrapper">
+                        <div class="buttons-atRight">
                             <button id="play" class="control control_play"></button>
                             <button id="stop" class="control control_stop"></button>
                             <button id="sound" class="control control_sound"></button>
                             <input id="volume" type="range" min="0" max="100" step="1" value="100" />
                             <span class="time">00:00 / 00:00</span>
                         </div>
-
-                        <div class="buttons__atLeft">
-
+                        <div class="buttons-atLeft">
                             <div class="motion-menu hidden">
                                 <button class="speed-buttons" speed="0.25">Speed 0.25</button>
                                 <button class="speed-buttons" speed="0.5">Speed 0.5</button>
@@ -130,17 +126,24 @@
                                 <button class="speed-buttons" speed="1.75">Speed 1.75</button>
                                 <button class="speed-buttons" speed="2">Speed 2.0</button>
                             </div>
-
                             <button id="motion" class="control control_motion"></button>
                             <button id="loop" class="control control_loop"></button>
                             <button id="fullscreen" class="control control_fullscreen"></button>
                         </div>
-
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
+
+    <footer class="footer">
+        <div class="footer-wrapper container">
+            <div class="annotation">
+                <span class="annotation__text">© 2021 – 2022 Eugene Serb. Content licensed under </span><a href="https://eugene-serb.github.io/mediaplayer/LICENSE.md" target="_blank">GNU General Public License v3.0</a><br>
+                <span class="annotation__text">This site is open source. </span><a href="https://github.com/eugene-serb/mediaplayer/" target="_blank">Improve this page.</a>
+            </div>
+        </div>
+    </footer>
 
     <script src="js/mediaplayer.js"></script>
     <script src="https://eugene-serb.github.io/js/scripts.js"></script>

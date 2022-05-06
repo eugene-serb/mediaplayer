@@ -2,26 +2,11 @@
 /* MEDIAPLAYER */
 /* ----------- */
 
-const VIDEO = document.querySelector('.video');
-const PROGRESS = document.querySelector('.progress');
-const START_BUTTON = document.querySelector('#play');
-const STOP_BUTTON = document.querySelector('#stop');
-const SOUND_BUTTON = document.querySelector('#sound');
-const VOLUME = document.querySelector('#volume');
-const MEDIAPLAYER = document.querySelector('.player');
-const FULLSCREEN_BUTTON = document.querySelector('#fullscreen');
-const LOOP_BUTTON = document.querySelector('#loop');
-const MOTION = document.querySelector('#motion');
-const MOTION_MENU = document.querySelector('.motion-menu');
-const MOTION_BUTTONS = document.querySelectorAll('.speed-buttons');
-const TIME = document.querySelector('.time');
-
-/* ----- */
-/* TIMER */
-/* ----- */
+'use strict'
 
 class Timer {
-    constructor() {
+    constructor(container) {
+        this.container = container;
         this.currentTime = '00:00';
         this.durationTime = '00:00';
         this._draw();
@@ -34,7 +19,7 @@ class Timer {
     };
 
     _draw = () => {
-        TIME.innerText = `${this.currentTime} / ${this.durationTime}`;
+        this.container.innerText = `${this.currentTime} / ${this.durationTime}`;
     };
 
     _calculate = (time) => {
@@ -53,138 +38,143 @@ class Timer {
     };
 };
 
-/* ------ */
-/* PLAYER */
-/* ------ */
+class Mediaplyer {
+    constructor() {
+        this.#configurations();
+        this.#DOMs();
+        this.#eventListeners();
 
-let timer = new Timer();
+        this.timer = new Timer(this.$TIME);
+    };
 
-VIDEO.addEventListener('timeupdate', () => {
-    PROGRESS.value = 100 * VIDEO.currentTime / VIDEO.duration;
-    timer.update(VIDEO.currentTime, VIDEO.duration);
-
-    if (!VIDEO.loop) {
-        if (VIDEO.currentTime === VIDEO.duration) {
-            setPlay();
+    swapPlayPause = () => {
+        if (this.$BUTTON_START.classList.contains('control_play')) {
+            this.setPause();
+        } else if (this.$BUTTON_START.classList.contains('control_pause')) {
+            this.setPlay();
         };
     };
-});
+    setPlay = () => {
+        this.$BUTTON_START.classList.remove('control_pause');
+        this.$BUTTON_START.classList.add('control_play');
+    };
+    setPause = () => {
+        this.$BUTTON_START.classList.remove('control_play');
+        this.$BUTTON_START.classList.add('control_pause');
+    };
+    setFullscreen = () => {
+        this.$BUTTON_FULLSCREEN.classList.remove('control_fullscreen-exit');
+        this.$BUTTON_FULLSCREEN.classList.add('control_fullscreen');
+    };
+    unsetFullscreen = () => {
+        this.$BUTTON_FULLSCREEN.classList.remove('control_fullscreen');
+        this.$BUTTON_FULLSCREEN.classList.add('control_fullscreen-exit');
+    };
 
-PROGRESS.addEventListener('click', () => {
-    let width = PROGRESS.offsetWidth;
-    let offset = event.offsetX;
+    #configurations = () => {
+    };
+    #DOMs = () => {
+        this.$MEDIAPLAYER = document.querySelector('.mediaplayer');
+        this.$VIDEO = document.querySelector('.video');
+        this.$PROGRESS = document.querySelector('.progress');
+        this.$VOLUME = document.getElementById('volume');
+        this.$TIME = document.querySelector('.time');
 
-    PROGRESS.value = 100 * offset / width;
-    VIDEO.currentTime = VIDEO.duration * offset / width;
-});
+        this.$BUTTON_START = document.getElementById('play');
+        this.$BUTTON_STOP = document.getElementById('stop');
+        this.$BUTTON_SOUND = document.getElementById('sound');
+        this.$BUTTON_FULLSCREEN = document.getElementById('fullscreen');
+        this.$BUTTON_LOOP = document.getElementById('loop');
 
-/**/
+        this.$BUTTON_MOTION = document.getElementById('motion');
+        this.$BUTTONS_MOTION = document.querySelectorAll('.speed-buttons');
+        this.$MENU_MOTION = document.querySelector('.motion-menu');
+    };
+    #eventListeners = () => {
+        this.$VIDEO.addEventListener('timeupdate', () => {
+            this.$PROGRESS.value = 100 * this.$VIDEO.currentTime / this.$VIDEO.duration;
+            this.timer.update(this.$VIDEO.currentTime, this.$VIDEO.duration);
 
-setPlay = () => {
-    START_BUTTON.classList.remove('control_pause');
-    START_BUTTON.classList.add('control_play');
-};
+            if (this.$VIDEO.loop === false) {
+                if (this.$VIDEO.currentTime === this.$VIDEO.duration) {
+                    this.setPlay();
+                };
+            };
+        });
+        this.$PROGRESS.addEventListener('click', (event) => {
+            let width = this.$PROGRESS.offsetWidth;
+            let offset = event.offsetX;
 
-setPause = () => {
-    START_BUTTON.classList.remove('control_play');
-    START_BUTTON.classList.add('control_pause');
-};
+            this.$PROGRESS.value = 100 * (offset / width);
+            this.$VIDEO.currentTime = this.$VIDEO.duration * (offset / width);
+        });
+        this.$VOLUME.addEventListener('input', () => {
+            this.$VIDEO.volume = this.$VOLUME.value / 100;
+        });
+        this.$BUTTON_START.addEventListener('click', () => {
+            this.swapPlayPause();
 
-swapPlayPause = () => {
-    if (START_BUTTON.classList.contains('control_play')) {
-        setPause();
-    } else if (START_BUTTON.classList.contains('control_pause')) {
-        setPlay();
+            if (this.$VIDEO.paused === true) {
+                this.$VIDEO.play();
+            } else {
+                this.$VIDEO.pause();
+            };
+        });
+        this.$BUTTON_STOP.addEventListener('click', () => {
+            this.$VIDEO.pause();
+            this.$VIDEO.currentTime = 0;
+            this.setPlay();
+        });
+        this.$BUTTON_SOUND.addEventListener('click', () => {
+            if (this.$VIDEO.muted === true) {
+                this.$BUTTON_SOUND.classList.remove('control_sound-muted');
+                this.$BUTTON_SOUND.classList.add('control_sound');
+                this.$VIDEO.muted = false;
+            } else {
+                this.$BUTTON_SOUND.classList.remove('control_sound');
+                this.$BUTTON_SOUND.classList.add('control_sound-muted');
+                this.$VIDEO.muted = true;
+            };
+        });
+        this.$BUTTON_LOOP.addEventListener('click', () => {
+            if (this.$VIDEO.hasAttribute('loop')) {
+                this.$VIDEO.removeAttribute('loop', '');
+            } else {
+                this.$VIDEO.setAttribute('loop', '');
+            };
+        });
+        this.$BUTTON_MOTION.addEventListener('click', () => {
+            if (this.$MENU_MOTION.classList.contains('hidden')) {
+                this.$MENU_MOTION.classList.remove('hidden');
+            } else {
+                this.$MENU_MOTION.classList.add('hidden');
+            };
+        });
+        this.$BUTTONS_MOTION.forEach((item) => {
+            item.addEventListener('click', () => {
+                this.$VIDEO.playbackRate = item.getAttribute('speed');
+            });
+        });
+        this.$BUTTON_FULLSCREEN.addEventListener('click', () => {
+            if (document.fullscreen === true) {
+                document.exitFullscreen();
+            } else {
+                this.$MEDIAPLAYER.requestFullscreen();
+            };
+        });
+        window.addEventListener('fullscreenchange', () => {
+            if (document.fullscreen === true) {
+                this.unsetFullscreen();
+            } else {
+                this.setFullscreen();
+            };
+        });
     };
 };
 
-START_BUTTON.addEventListener('click', () => {
-    swapPlayPause();
+/* -------------- */
+/* INITIALIZATION */
+/* -------------- */
 
-    if (VIDEO.paused) {
-        VIDEO.play();
-    } else {
-        VIDEO.pause();
-    };
-});
-
-/**/
-
-STOP_BUTTON.addEventListener('click', () => {
-    VIDEO.pause();
-    VIDEO.currentTime = 0;
-    setPlay();
-});
-
-SOUND_BUTTON.addEventListener('click', () => {
-    if (VIDEO.muted) {
-        SOUND_BUTTON.classList.remove('control_sound-muted');
-        SOUND_BUTTON.classList.add('control_sound');
-        VIDEO.muted = false;
-    } else {
-        SOUND_BUTTON.classList.remove('control_sound');
-        SOUND_BUTTON.classList.add('control_sound-muted');
-        VIDEO.muted = true;
-    };
-});
-
-VOLUME.addEventListener('input', () => {
-    let volume = VOLUME.value;
-    VIDEO.volume = volume / 100;
-});
-
-/**/
-
-unsetFullscreen = () => {
-    FULLSCREEN_BUTTON.classList.remove('control_fullscreen');
-    FULLSCREEN_BUTTON.classList.add('control_fullscreen-exit');
-};
-
-setFullscreen = () => {
-    FULLSCREEN_BUTTON.classList.remove('control_fullscreen-exit');
-    FULLSCREEN_BUTTON.classList.add('control_fullscreen');
-};
-
-FULLSCREEN_BUTTON.addEventListener('click', () => {
-    if (document.fullscreen) {
-        document.exitFullscreen();
-    } else {
-        MEDIAPLAYER.requestFullscreen();
-    };
-});
-
-window.addEventListener('fullscreenchange', (e) => {
-    if (document.fullscreen) {
-        unsetFullscreen();
-    } else {
-        setFullscreen();
-    };
-});
-
-/**/
-
-LOOP_BUTTON.addEventListener('click', () => {
-    if (VIDEO.hasAttribute('loop')) {
-        VIDEO.removeAttribute('loop', '');
-    } else {
-        VIDEO.setAttribute('loop', '');
-    };
-});
-
-MOTION.addEventListener('click', () => {
-    if (MOTION_MENU.classList.contains('hidden')) {
-        MOTION_MENU.classList.remove('hidden');
-    } else {
-        MOTION_MENU.classList.add('hidden');
-    };
-});
-
-MOTION_BUTTONS.forEach((item) => {
-    item.addEventListener('click', () => {
-        let speed = item.getAttribute('speed');
-
-        VIDEO.play();
-        VIDEO.playbackRate = speed;
-    });
-});
+const MEDIAPLAYER = new Mediaplyer();
 
