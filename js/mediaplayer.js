@@ -2,7 +2,7 @@
 /* MEDIAPLAYER */
 /* ----------- */
 
-'use strict'
+'use strict';
 
 class Timer {
     constructor(container) {
@@ -40,7 +40,6 @@ class Timer {
 
 class Mediaplyer {
     constructor() {
-        this.#configurations();
         this.#DOMs();
         this.#eventListeners();
 
@@ -71,8 +70,6 @@ class Mediaplyer {
         this.$BUTTON_FULLSCREEN.classList.add('control_fullscreen-exit');
     };
 
-    #configurations = () => {
-    };
     #DOMs = () => {
         this.$MEDIAPLAYER = document.querySelector('.mediaplayer');
         this.$VIDEO = document.querySelector('.video');

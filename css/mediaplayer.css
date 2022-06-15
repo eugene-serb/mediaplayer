@@ -93,6 +93,10 @@
     background-size: cover;
 }
 
+    .control:hover {
+        border: 0;
+    }
+
 .time {
     color: #000000;
     font-size: 12px;
