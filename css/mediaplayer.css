@@ -5,153 +5,161 @@
 @charset 'UTF-8';
 
 .mediaplayer {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  background-color: #000000;
 }
 
 .video {
-    height: 100%;
-    border: 0;
-    border-radius: 0;
+  height: 100%;
+  border: 0;
+  border-radius: 0;
 }
 
 .controls-wrapper {
-    background-color: #FFFFFF;
-    border: 1px solid #000000;
-    padding: 4px;
+  background-color: #FFFFFF;
+  border: 1px solid #000000;
+  padding: 4px;
 }
 
-    :fullscreen .controls-wrapper {
-        opacity: 0;
-    }
+:fullscreen .controls-wrapper {
+  opacity: 0;
+}
 
-    :fullscreen .controls-wrapper:hover {
-        opacity: 1;
-    }
+  :fullscreen .controls-wrapper:hover {
+    opacity: 1;
+  }
 
-        :fullscreen .controls-wrapper:not(:hover) {
-            animation-name: fade;
-            animation-duration: 1.5s;
-        }
+  :fullscreen .controls-wrapper:not(:hover) {
+    animation-name: fade;
+    animation-duration: 1.5s;
+  }
 
 @keyframes fade {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0;
-    }
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
 }
 
 .progress-wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-    .progress {
-        width: 100%;
-        height: 12px;
-    }
+.progress {
+  width: 100%;
+  height: 12px;
+}
 
 .buttons-wrapper {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    background-color: #FFFFFF;
-    height: 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: #FFFFFF;
+  height: 24px;
 }
 
 .buttons-atRight, .buttons-atLeft {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
 }
 
 .motion-menu {
-    display: flex;
-    flex-direction: column;
-    min-width: 128px;
-    position: relative;
-    bottom: calc(101.5px + 32px + 24px);
-    background-color: #FFFFFF;
-    border: 1px solid #000000;
+  display: flex;
+  flex-direction: column;
+  min-width: 128px;
+  position: relative;
+  bottom: calc(101.5px + 32px + 24px);
+  background-color: #FFFFFF;
+  border: 1px solid #000000;
 }
 
 .control {
-    padding: 0;
-    margin: 0;
-    border: 0;
-    width: 24px;
-    height: 24px;
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-size: cover;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  min-width: 24px;
+  min-height: 24px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
-    .control:hover {
-        border: 0;
-    }
+  .control:hover {
+    border: 0;
+  }
 
 .time {
-    color: #000000;
-    font-size: 12px;
-    white-space: nowrap;
+  color: #000000;
+  font-size: 12px;
+  white-space: nowrap;
 }
 
 #volume {
-    padding: 0;
+  padding: 0;
 }
 
 .control_play {
-    background-image: url('../img/icons/play_arrow_black_24dp.svg');
+  background-image: url('../img/icons/play_arrow_black_24dp.svg');
 }
+
 .control_pause {
-    background-image: url('../img/icons/pause_black_24dp.svg');
+  background-image: url('../img/icons/pause_black_24dp.svg');
 }
+
 .control_stop {
-    background-image: url('../img/icons/stop_black_24dp.svg');
+  background-image: url('../img/icons/stop_black_24dp.svg');
 }
+
 .control_sound {
-    background-image: url('../img/icons/volume_up_black_24dp.svg');
+  background-image: url('../img/icons/volume_up_black_24dp.svg');
 }
+
 .control_sound-muted {
-    background-image: url('../img/icons/volume_off_black_24dp.svg');
+  background-image: url('../img/icons/volume_off_black_24dp.svg');
 }
+
 .control_motion {
-    background-image: url('../img/icons/slow_motion_video_black_24dp.svg');
+  background-image: url('../img/icons/slow_motion_video_black_24dp.svg');
 }
+
 .control_loop {
-    background-image: url('../img/icons/loop_black_24dp.svg');
+  background-image: url('../img/icons/loop_black_24dp.svg');
 }
+
 .control_fullscreen {
-    background-image: url('../img/icons/fullscreen_black_24dp.svg');
+  background-image: url('../img/icons/fullscreen_black_24dp.svg');
 }
+
 .control_fullscreen-exit {
-    background-image: url('../img/icons/fullscreen_exit_black_24dp.svg');
+  background-image: url('../img/icons/fullscreen_exit_black_24dp.svg');
 }
 
 @media only screen and (min-width: 640px) {
-    .buttons-wrapper {
-        height: 32px;
-    }
+  .buttons-wrapper {
+    height: 32px;
+  }
 
-    .control {
-        width: 32px;
-        height: 32px;
-    }
+  .control {
+    min-width: 32px;
+    min-height: 32px;
+  }
 
-    .time {
-        font-size: 16px
-    }
+  .time {
+    font-size: 16px
+  }
 
-    .progress {
-        width: 100%;
-        height: 16px;
-    }
+  .progress {
+    width: 100%;
+    height: 16px;
+  }
 }
-
