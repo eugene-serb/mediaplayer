@@ -1,7 +1,3 @@
-/* ----------- */
-/* MEDIAPLAYER */
-/* ----------- */
-
 'use strict';
 
 class Timer {
@@ -167,9 +163,4 @@ class Mediaplyer {
   };
 };
 
-/* -------------- */
-/* INITIALIZATION */
-/* -------------- */
-
 const MEDIAPLAYER = new Mediaplyer();
-
