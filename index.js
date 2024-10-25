@@ -13,9 +13,11 @@ class Timer {
     this.durationTime = this._calculate(duration);
     this._draw();
   };
+
   _draw = () => {
     this.container.innerText = `${this.currentTime} / ${this.durationTime}`;
   };
+  
   _calculate = (time) => {
     let seconds = Math.floor(time);
     let minutes = 0;
@@ -47,18 +49,22 @@ class Mediaplyer {
       this.setPlay();
     };
   };
+
   setPlay = () => {
     this.$BUTTON_START.classList.remove('control_pause');
     this.$BUTTON_START.classList.add('control_play');
   };
+
   setPause = () => {
     this.$BUTTON_START.classList.remove('control_play');
     this.$BUTTON_START.classList.add('control_pause');
   };
+
   setFullscreen = () => {
     this.$BUTTON_FULLSCREEN.classList.remove('control_fullscreen-exit');
     this.$BUTTON_FULLSCREEN.classList.add('control_fullscreen');
   };
+
   unsetFullscreen = () => {
     this.$BUTTON_FULLSCREEN.classList.remove('control_fullscreen');
     this.$BUTTON_FULLSCREEN.classList.add('control_fullscreen-exit');
@@ -81,6 +87,7 @@ class Mediaplyer {
     this.$BUTTONS_MOTION = document.querySelectorAll('.speed-buttons');
     this.$MENU_MOTION = document.querySelector('.motion-menu');
   };
+  
   #eventListeners = () => {
     this.$VIDEO.addEventListener('timeupdate', () => {
       this.$PROGRESS.value = 100 * this.$VIDEO.currentTime / this.$VIDEO.duration;
