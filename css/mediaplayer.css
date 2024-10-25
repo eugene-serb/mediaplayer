@@ -140,6 +140,12 @@
   background-image: url('../img/icons/fullscreen_exit_black_24dp.svg');
 }
 
+.speed-button {
+  border: 1px solid #000000;
+  border-radius: unset;
+  background-color: #FFFFFF;
+}
+
 @media only screen and (min-width: 640px) {
   .buttons-wrapper {
     height: 32px;
